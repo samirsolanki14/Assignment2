@@ -1,0 +1,101 @@
+﻿@page "/FoodList"
+
+<PageTitle>FoodList</PageTitle>
+
+<h1>Add FoodList</h1>
+<h3>Find Isle</h3>
+
+<ul>
+    @foreach (var foodlist in foods)
+    {
+
+      <table>
+                <thead>
+                    <tr>
+                        <th>Foodname-</th>
+                        <th>Quantity-</th>
+                        <th>Price-</th>
+                        <th>FoodProductNumber-</th>
+                        <th>FoodDescription-</th>
+                        <th>Foodexpirydays</th>
+
+                        </tr>
+                </thead>
+
+            </table>
+
+             
+
+
+        <li>@foodlist.foodname</li>
+            <input type="textbox" @bind="newFoodName">
+            <input @bind="newFoodName">
+
+        <li>@foodlist.quantity</li>
+        <li>@foodlist.price</li>
+        <li>@foodlist.foodproductnumber</li>
+        <li>@foodlist.fooddescription</li>
+        <li>@foodlist.foodexpirydays</li>
+        @* <input type="button" @bind="newFoodNumbers"> *@
+    }
+</ul>
+
+
+<input placeholder="Add Some FoodName" @bind="newFoodName" />
+
+<input placeholder="Add Some FoodQuantity" @bind="newFoodQuantity" />
+<input placeholder="Add Some FoodPrice" @bind="newFoodPrice" />
+<input placeholder="Add Some ProductNumber" @bind="newFoodNumbers" />
+
+<input placeholder="Add Some FoodDescription" @bind="newFoodDesc" />
+
+<input placeholder="Add Some expirydays" @bind="newFoodexpiry" />
+@* <button @onclick="AddFoodDescVoid">Add FoodDesc</button> *@
+
+<button @onclick="AddFoodItem">Add FoodItem</button>
+
+@code {
+        public bool IsDone{get;set;}
+
+    private List<Fooditems> foods = new();
+
+    private List<Fooditems> foods1 = new();
+        private List<Fooditems> foods2 = new();
+            private List<Fooditems> foods3 = new();
+                private List<Fooditems> foods4 = new();
+    private string? newFoodName;
+    private string? newFoodDesc;
+    private int newFoodQuantity;
+    private int newFoodPrice;
+    private int newFoodNumbers;
+    private int newFoodexpiry;
+
+     private void AddFoodItem()
+    {
+        @* if (!string.IsNullOrWhiteSpace(newFoodName))
+        { *@
+
+        
+            foods.Add(new Fooditems { foodname = newFoodName });
+            newFoodName = string.Empty;
+
+
+            @* foods.Add(new Fooditems { fooddescription = newFoodDesc });
+            newFoodDesc = string.Empty; *@
+    
+            foods.Add(new Fooditems { fooddescription = newFoodDesc });
+            @* newFoodDesc = string.Empty; *@
+   
+            foods.Add(new Fooditems { quantity = newFoodQuantity });
+            @* quantity = string.Empty; *@
+
+            foods.Add(new Fooditems { price = newFoodPrice });
+
+            foods.Add(new Fooditems { foodexpirydays = newFoodexpiry });
+
+            foods.Add(new Fooditems { foodproductnumber = newFoodNumbers });
+      
+    }
+
+}
+
